@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewer-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Weekly Workout Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <h1 class="app-title">This Week</h1>
+    <button id="editBtn" class="edit-link" title="Edit exercises">Edit</button>
+  </header>
+
+  <main id="homeView" class="view">
+    <p id="weekLabel" class="week-label"></p>
+    <ul id="exerciseList" class="exercise-list"></ul>
+    <p id="emptyState" class="empty-state" hidden>No exercises yet. Tap "Edit" to add some.</p>
+  </main>
+
+  <main id="editView" class="view" hidden>
+    <div class="view-header">
+      <button class="back-btn" data-back>&larr; Back</button>
+      <h2>Edit Exercises</h2>
+    </div>
+
+    <section class="section">
+      <h3>Your Exercises</h3>
+      <ul id="activeExerciseList" class="active-exercise-list"></ul>
+    </section>
+
+    <section class="section">
+      <h3>Add Custom Exercise</h3>
+      <div class="custom-form">
+        <input id="customName" type="text" placeholder="Exercise name">
+        <div class="targets-row">
+          <input id="customSets" type="number" min="0" placeholder="Sets">
+          <input id="customReps" type="number" min="0" placeholder="Reps">
+          <input id="customWeight" type="number" min="0" step="0.5" placeholder="Weight">
+        </div>
+        <button id="addCustomBtn" class="primary-btn">Add Exercise</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Common Exercises</h3>
+      <p class="hint">Tap to quick-add (edit targets after adding).</p>
+      <div id="presetList" class="preset-list"></div>
+    </section>
+  </main>
+
+  <main id="historyView" class="view" hidden>
+    <div class="view-header">
+      <button class="back-btn" data-back>&larr; Back</button>
+      <h2>History</h2>
+    </div>
+    <ul id="historyList" class="history-list"></ul>
+    <p id="historyEmpty" class="empty-state" hidden>No past weeks yet.</p>
+  </main>
+
+  <nav class="bottom-nav">
+    <button id="navHome" class="nav-btn active" data-nav="home">This Week</button>
+    <button id="navHistory" class="nav-btn" data-nav="history">History</button>
+  </nav>
+
+  <div id="logModalOverlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3 id="logModalTitle">Log Exercise</h3>
+      <div class="targets-row">
+        <label>Sets<input id="logSets" type="number" min="0"></label>
+        <label>Reps<input id="logReps" type="number" min="0"></label>
+        <label>Weight<input id="logWeight" type="number" min="0" step="0.5"></label>
+      </div>
+      <div class="modal-actions">
+        <button id="logCancelBtn" class="secondary-btn">Cancel</button>
+        <button id="logSaveBtn" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="editTargetModalOverlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <h3>Edit Targets</h3>
+      <div class="targets-row">
+        <label>Sets<input id="editTargetSets" type="number" min="0"></label>
+        <label>Reps<input id="editTargetReps" type="number" min="0"></label>
+        <label>Weight<input id="editTargetWeight" type="number" min="0" step="0.5"></label>
+      </div>
+      <div class="modal-actions">
+        <button id="removeExerciseBtn" class="danger-btn">Remove</button>
+        <button id="editTargetCancelBtn" class="secondary-btn">Cancel</button>
+        <button id="editTargetSaveBtn" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
